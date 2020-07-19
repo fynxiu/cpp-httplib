@@ -5324,22 +5324,22 @@ inline SSLSocketStream::SSLSocketStream(socket_t sock, SSL *ssl,
       read_timeout_usec_(read_timeout_usec),
       write_timeout_sec_(write_timeout_sec),
       write_timeout_usec_(write_timeout_usec) {
-  {
-    timeval tv;
-    tv.tv_sec = static_cast<long>(read_timeout_sec);
-    tv.tv_usec = static_cast<decltype(tv.tv_usec)>(read_timeout_usec);
+  // {
+  //   timeval tv;
+  //   tv.tv_sec = static_cast<long>(read_timeout_sec);
+  //   tv.tv_usec = static_cast<decltype(tv.tv_usec)>(read_timeout_usec);
 
-    setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, reinterpret_cast<char *>(&tv),
-               sizeof(tv));
-  }
-  {
-    timeval tv;
-    tv.tv_sec = static_cast<long>(write_timeout_sec);
-    tv.tv_usec = static_cast<decltype(tv.tv_usec)>(write_timeout_usec);
+  //   setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, reinterpret_cast<char *>(&tv),
+  //              sizeof(tv));
+  // }
+  // {
+  //   timeval tv;
+  //   tv.tv_sec = static_cast<long>(write_timeout_sec);
+  //   tv.tv_usec = static_cast<decltype(tv.tv_usec)>(write_timeout_usec);
 
-    setsockopt(sock, SOL_SOCKET, SO_SNDTIMEO, reinterpret_cast<char *>(&tv),
-               sizeof(tv));
-  }
+  //   setsockopt(sock, SOL_SOCKET, SO_SNDTIMEO, reinterpret_cast<char *>(&tv),
+  //              sizeof(tv));
+  // }
 }
 
 inline SSLSocketStream::~SSLSocketStream() {}
